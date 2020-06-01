@@ -10,14 +10,14 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:memory-manager.helloWorld"
+		"onCommand:memory-manager.garbagecollector"
 	],
 	"main": "./extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "memory-manager.helloWorld",
-				"title": "Hello World"
+				"command": "memory-manager.garbagecollector",
+				"title": "Create Garbage Collector"
 			}
 		]
 	},
