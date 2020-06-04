@@ -7,11 +7,9 @@ using namespace std;
 
 int main(){
 
-    int a, b;
-    cin >> a >> b;
-    cout << sumar(a,b) << endl;
-    cout << multiplicar(a,b) << endl; 
-
+    puntero *VSptr= new puntero();
+    *VSptr=5;
+    cout << VSptr->data;
     return 0;
 }
 
