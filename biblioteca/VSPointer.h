@@ -31,7 +31,7 @@ public:
 
    T& operator*();
 
-   T operator&();
+   T operator&(); 
 
    T getData();
 
