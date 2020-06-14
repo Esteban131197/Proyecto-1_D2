@@ -30,6 +30,8 @@ public:
 
     Pointer<T> operator*()
 
+    int getid();
+
     static Pointer<T> New();
 
     Pointer();
@@ -41,6 +43,8 @@ public:
 private:
 
 T *content;
+int id
+
 
 
 };
