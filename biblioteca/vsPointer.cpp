@@ -6,11 +6,6 @@
 
 using namespace std;
 
-template<class T>
-Pointer<T>::Pointer(){
-
-}
-
 /*
 Se crea un nuevo puntero
 */
@@ -18,7 +13,7 @@ Se crea un nuevo puntero
 
 template<class T>
 Pointer<T> Pointer<T>::New(){
-    Pointer<T> NewPointer;
+    Pointer<T> NewPointer;  
     return NewPointer;
 
 }
@@ -37,7 +32,7 @@ Sobrecarga de operador *
 template<class T>
 Pointer<T> Pointer<T>::operator*()
 {
-    return*this
+    return *this;
 }
 
 template<class T>
@@ -63,11 +58,49 @@ Sobrecarga de operador &
 
 template <class T>
 T Pointer<T>::operator &()
-{
+{ 
     return *content
 }
 
-template <class T>
+template<class T>
+Pointer<T>::Pointer(){
+    this->content = new T;
+
+    if (typeid(T)== typeid(string)){
+        this->type = "string";
+
+    }
+    else if(typeid(T)== typeid(int)){
+        this->type = "int";
+
+    }
+    else if(typeid(T)== typeid(double)){
+        this->type = "double";
+
+    }
+    else if(typeid(T)== typeid(char)){
+        this->type = "char";
+
+    }
+    else if(typeid(T)== typeid(bool)){
+        this->type = "bool";
+
+    }
+    else if(typeid(T)== typeid(float)){
+        this->type = "float";
+
+    }
+    else if(typeid(T)== typeid(short)){
+        this->type = "short";
+
+    }
+    else if(typeid(T)== typeid(unsigned)){
+        this->type = "unsigned";
+
+    }
+}
+
+  template <class T>
 Pointer<T>::~Pointer<T>(){
 
     garbage::clear(this,content);
@@ -79,6 +112,7 @@ void Pointer<T>::operator = (Pointer<T>* firstPointer){
 
     content = firstPointer->content;
     garbage::newPointer((Pointer<void*>*)this,content,nativeTypes);
-
+    id = firstPointer->id;
 
 }
+
