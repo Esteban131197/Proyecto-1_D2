@@ -1,28 +1,27 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-const vscode = require('vscode');
+// REALIZADO CON API. Estructura de API, modificaciones y adaptaciones por Esteban Morales.
+// Contenedor de extension. 
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
+//Declaracion de constantes necesarias
+const vscode = require('vscode');
+const net = require('net')
+
+// Metodo llamado una vez activa la extension.
 
 /**
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
+	// Realice diagnostico con "console.log" y errores con "console.error", con la extension ACTIVA!
 	console.log('Congratulations, your extension "memory-manager" is now active!');
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with  registerCommand
-	// The commandId parameter must match the command field in package.json
+	// Comando defino en package.json.
+	// Implementacion de comando para mostar mensaje de activacion.
 	let disposable = vscode.commands.registerCommand(
 		'memory-manager.garbagecollector',
 		 function () {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Garbage collector from memory-manager!');
+		//Mensaje en pantalla:
+		vscode.window.showInformationMessage('Interfaz visual from memory-manager!');
 	
 	}
 	);
