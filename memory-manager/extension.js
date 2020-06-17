@@ -20,25 +20,13 @@ function activate(context) {
 		'memory-manager.garbagecollector',
 		 function () {
 		//Mensaje en pantalla:
-		vscode.window.showInformationMessage('Interfaz visual from memory-manager!');
 	
-	}
-	);
+	});
 
-	//Variable de alamacen de comando y fucion de inicio
-	let init = vscode.commands.registerCommand('memory-manager.start',
-	function(){
-
-		// Mensaje en pantalla.
+	// Mensaje en pantalla.
 		vscode.window.showInformationMessage('La extension esta activada correctamente');
 
-		
-
-		// Creacion del HTML necesaio para el  webView
-		
-
-		
-	
+	});
 
 	context.subscriptions.push(disposable);
 
