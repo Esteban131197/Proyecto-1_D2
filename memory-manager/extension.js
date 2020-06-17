@@ -5,6 +5,8 @@
 const vscode = require('vscode');
 const { title } = require('process');
 const { Script } = require('vm');
+const fs = require('fs');
+const path = require('path');
 
 // Metodo llamado una vez activa la extension.
 
@@ -38,6 +40,15 @@ function activate(context) {
 				<script src="app.js"></script>
 			</body>
 			</html>`;
+
+			fs.writeFile(path.join(folderPath, "index.html"), htmlContent, err => {
+				if(err){
+					console.error(err);
+					return vscode.window.showErrorMessage(
+						"Error al crear archivo de almacen HTML"
+					);}
+			vscode.window.showInformationMessage("Se creo correctamente el archivo de almacen HTML");
+			});
 	});
 
 	context.subscriptions.push(disposable);
