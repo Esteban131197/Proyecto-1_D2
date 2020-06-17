@@ -3,7 +3,6 @@
 
 //Declaracion de constantes necesarias
 const vscode = require('vscode');
-const net = require('net')
 
 // Metodo llamado una vez activa la extension.
 
@@ -33,53 +32,7 @@ function activate(context) {
 		// Mensaje en pantalla.
 		vscode.window.showInformationMessage('La extension esta activada correctamente');
 
-		// creacion de 'webview panel' (estructa recuperada del API oficial)
-		const panel = vscode.window.createWebviewPanel(
-			'HS',
-			'Memory Manager',
-			vscode.ViewColumn.One,
-			{
-				enableScripts: true
-			}
-		);
-
-		// Configuracion del "webview panel" con HTML
-		panel.webview.html = getWebviewContent();
-
-		// Mensaje del webview
-		var registered = false;  
-      	panel.webview.onDidReceiveMessage(
-        	message => {
-          		switch (message.command) {
-            	case 'connect':
-					if (!registered){
-						clientSrv.write("p "+message.text);
-						return;
-					}else{
-						vscode.window.showInformationMessage("Conectado correctamente");
-					  	return;
-					}
-				case 'empty':
-					vscode.window.showErrorMessage("Contraseña incorrecta");
-					return;
-
-				case 'empty2':
-					vscode.window.showErrorMessage("Debe escribir un ID");
-					return;
-					  
-				/*case 'save':
-					clientLib.write('2');
-					return;
-*/
-				case 'asked':
-					vscode.window.showInformationMessage("VSPtr correspondiente al ID="+message.text);
-					clientSrv.write("ID"+message.text);
-					return;
-				}
-        	},
-        	undefined,
-        	context.subscriptions
-      	);
+		
 
 		// Creacion del HTML necesaio para el  webView
 		
@@ -88,9 +41,9 @@ function activate(context) {
 	
 
 	context.subscriptions.push(disposable);
-	context.subscriptions.push(init);
 
 }
+
 exports.activate = activate;
 
 // this method is called when your extension is deactivated
