@@ -41,6 +41,10 @@ function activate(context) {
 			</body>
 			</html>`;
 
+			const folderPath = vscode.workspace.workspaceFolders[0].uri
+				.toString()
+				.split(":")[1];
+
 			fs.writeFile(path.join(folderPath, "index.html"), htmlContent, err => {
 				if(err){
 					console.error(err);
