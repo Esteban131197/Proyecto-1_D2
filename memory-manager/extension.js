@@ -19,17 +19,11 @@ function activate(context) {
 	let disposable = vscode.commands.registerCommand(
 		'memory-manager.garbagecollector',
 		 function () {
-		//Mensaje en pantalla:
-	
-	});
-
 	// Mensaje en pantalla.
 		vscode.window.showInformationMessage('La extension esta activada correctamente');
-
 	});
 
 	context.subscriptions.push(disposable);
-
 }
 
 exports.activate = activate;
