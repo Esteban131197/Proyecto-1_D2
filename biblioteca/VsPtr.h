@@ -19,11 +19,11 @@ template <class T>
 
 class VsPtr {
 
-private;
+private:
     
     T* data;
 
-public;
+public:
     /**
      * @brief New es un metodo estatico para instanciar nuevos VsPtrs
      * @return VsPtr
@@ -84,7 +84,7 @@ public;
 template <class T>
 VsPtr<T> VsPtr<T>::New() {
 
-    return VsPrt();
+    return VsPrt(); 
 
 }
 

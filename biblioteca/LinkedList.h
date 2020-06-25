@@ -1,4 +1,5 @@
 /**
+ * 
  * @file LinkedList.h
  * @date 02/06/20
  * @author Brayan Solano
@@ -7,15 +8,16 @@
 */
 
 
-
 #include "Node.h"
-//#include<cstdlib>
+
 #include<string>
 
 using namespace std;
 
 template <typename T>
 class LinkedList {
+
+
 private:
     Node<T> *head,*tail;
     int size;
@@ -37,6 +39,7 @@ public:
     */
     void display();
     /**
+     * Getter
      * @brief getSize Muestra el tamano de la lista
      * @return int tamano de la lista
     */
@@ -84,14 +87,20 @@ public:
 
 };
 
-
+/**
+ * Constructor de la lista
+ * 
+*/
 template <typename T>
 LinkedList<T>::LinkedList() {
     head = nullptr;
     tail = nullptr;
     size = 0;
 }
-
+/**
+ * Agrega un nodo a la lista
+ * 
+*/
 template <typename T>
 void LinkedList<T>::addNode(T* n) {
     auto *temp = new Node<T>;
@@ -128,7 +137,10 @@ void LinkedList<T>::display(){
         temp = temp->getNext();
     }
 }
-
+/**
+ * Obtiene el largo de la lista
+ * @return int
+*/
 
 template <typename T>
 int LinkedList<T>::getSize(){
@@ -151,7 +163,11 @@ int LinkedList<T>::generateID(){
     ids[i]=num;
     return num;
 }
-
+/**
+ * 
+ * 
+ * 
+*/
 template <typename T>
 void LinkedList<T>::copyData(T* newData, T* oldData){
     Node<T>* temp = head;

@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include "GarbageCollector.h"
 
+
 using namespace std;
 
 void run();
@@ -12,7 +13,10 @@ GarbageCollector::GarbageCollector(){
     this->flag = true;
     this->thrd = thread(run);
 }
-
+/**
+ * @brief getInstance Funcion para retornar la instancia del singleton
+ * 
+*/
 GarbageCollector* GarbageCollector::getInstance(){
     if (instance == 0)
     {
