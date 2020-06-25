@@ -1,8 +1,8 @@
 {
 	"name": "memory-manager",
 	"displayName": "memory-manager",
-	"description": "",
-	"version": "2.4.0",
+	"description": "This is a memory-manager",
+	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.45.0"
 	},
@@ -10,13 +10,13 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:memory-manager.garbagecollector"
+		"onCommand:extension.garbagecollector"
 	],
 	"main": "./extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "memory-manager.garbagecollector",
+				"command": "extension.garbagecollector",
 				"title": "Create Garbage Collector"
 			}
 		]

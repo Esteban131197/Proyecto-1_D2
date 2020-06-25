@@ -21,41 +21,38 @@ function activate(context) {
 	// Comando defino en package.json.
 	// Implementacion de comando para mostar mensaje de activacion.
 	let disposable = vscode.commands.registerCommand(
-		'memory-manager.garbagecollector',
+		'extension.garbagecollector',
 		 function () {
-
-	// Mensaje en pantalla.
-		vscode.window.showInformationMessage('La extension esta activada correctamente');		
-
 			const htmlContent = `<!DOCTYPE html>
-			<html lang = "en">
-			<head>
-				<meta charset="UTF-8" />
-				<meta name="viewpport" content="width=device-width, initial-scale=1.0" />
-				<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-				<title>Document</title>
-				<link rel="stylesheet" href="app.css" />
-			</head>
-			<body>
-				<script src="app.js"></script>
-			</body>
-			</html>`;
 
-			const folderPath = vscode.workspace.workspaceFolders[0].uri
-				.toString()
-				.split(":")[1];
+<html lang = "en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewpport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Document</title>
+	<link rel="stylesheet" href="app.css" />
+</head>
+<body>
+	<script src="app.js"></script>
+</body>
+</html>
+		`;	
 
-			fs.writeFile(path.join(folderPath, "index.html"), htmlContent, err => {
-				if(err){
-					console.error(err);
-					return vscode.window.showErrorMessage(
-						"Error al crear archivo de almacen HTML"
-					);}
-			vscode.window.showInformationMessage("Se creo correctamente el archivo de almacen HTML");
-			});
-	});
+		const folderPath = vscode.workspace.workspaceFolders[0].uri
+			.toString()
+			.split(":")[1];
 
-	context.subscriptions.push(disposable);
+		fs.writeFile(path.join(folderPath, "index.html"), htmlContent, err => {
+			if(err){
+				console.error(err);
+				return vscode.window.showErrorMessage("Error al crear archivo de almacen HTML");
+			}
+		vscode.window.showInformationMessage("Se creo correctamente el archivo de almacen HTML");
+		});
+});
+
+context.subscriptions.push(disposable);
 }
 
 exports.activate = activate;
