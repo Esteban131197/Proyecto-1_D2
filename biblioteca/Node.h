@@ -1,4 +1,5 @@
 
+#pragma once
 /**
  * @file Node.h
  * @date 28/05/20
@@ -8,6 +9,11 @@
 */
 
 using namespace std;
+/**
+ * @brief nodo
+ * 
+ * @tparam T tipo del nodo
+ */
 template <typename T>
 class Node {
 private:

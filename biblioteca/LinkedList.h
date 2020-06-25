@@ -1,3 +1,5 @@
+
+
 /**
  * 
  * @file LinkedList.h
@@ -15,6 +17,10 @@
 using namespace std;
 
 template <typename T>
+/**
+ * @brief clase que identifica la lista enlazada
+ * 
+ */
 class LinkedList {
 
 
@@ -93,6 +99,7 @@ public:
 */
 template <typename T>
 LinkedList<T>::LinkedList() {
+    //inicializa los datos de la lista
     head = nullptr;
     tail = nullptr;
     size = 0;
@@ -103,7 +110,9 @@ LinkedList<T>::LinkedList() {
 */
 template <typename T>
 void LinkedList<T>::addNode(T* n) {
+    //crea un nodo temporal
     auto *temp = new Node<T>;
+    //asigna el tipo del nodo
     if (typeid(T)== typeid(string)){
         temp->setDataType("string");
     }
@@ -113,27 +122,31 @@ void LinkedList<T>::addNode(T* n) {
     else if (typeid(T)== typeid(bool)){
         temp->setDataType("boolean");
     }
+    //asigna el id, dato y siguiente del nodo
     temp->setID(this->generateID());
     temp->setData(n);
     temp->setNext(nullptr);
-
+    //si la lista esta vacia lo usa como padre
     if (head == nullptr){
         head = temp;
         tail = temp;
     }
+    //caso contrario lo agrega al final
     else{
         tail->setNext(temp);
         tail = tail->getNext();
     }
+    //le aumenta 1 al tamaño
     size++;
 }
 
 
 template <typename T>
 void LinkedList<T>::display(){
+    //crea un nodo para recorrer la lista
     Node<T>* temp = head;
+    //recorre e imprime la lista
     while(temp != nullptr){
-        cout<<temp->getData()<<endl;
         temp = temp->getNext();
     }
 }
@@ -144,6 +157,7 @@ void LinkedList<T>::display(){
 
 template <typename T>
 int LinkedList<T>::getSize(){
+    //devuelve el tamaño
     return this->size;
 }
 
@@ -171,19 +185,25 @@ int LinkedList<T>::generateID(){
 template <typename T>
 void LinkedList<T>::copyData(T* newData, T* oldData){
     Node<T>* temp = head;
+    //crea 2 nodos temporales
     Node<T>* temp2 = head;
     while(temp != nullptr){
+        // si el nodo temporal 1 es el nuevo dato
         if(temp->getMemDir() == newData){
+            // recorre la lsita con el nodo temporal 2 hasta llegar al dato viejo
             while(temp2->getMemDir()!=oldData){
                 temp2 = temp2->getNext();
             }
+            //aumenta las referencias
             temp->setReferences(temp->getReferences()+1);
+            //si la referencia es mayor a 1, le resta la referencia
             if(temp2->getReferences()>1){
                 temp->setReferences(temp->getReferences()-1);
             }
             else{
                 temp2->setReferences(-1);
             }
+            // borra la referencia del dato viejo
             deleteRef(oldData);
             return;
         }
@@ -194,9 +214,12 @@ void LinkedList<T>::copyData(T* newData, T* oldData){
 
 template <typename T>
 void LinkedList<T>::deleteRef(T* removeData){
+    //crea un puntero a un nodo temporal
     auto* temp = new Node<T>;
     temp = this->head;
+    //recorre la list
     while(temp!=nullptr){
+        //si es lo que se buscaba borramos el dato
         if(temp->getMemDir() == removeData && temp->getReferences()>=1){
             temp->setReferences(temp->getReferences()-1);
             return;
@@ -204,17 +227,21 @@ void LinkedList<T>::deleteRef(T* removeData){
         temp = temp->getNext();
     }
     temp = this->head;
+    //si el dato es la cabez, elimina por medio de la cabeza
     if(temp->getMemDir()==removeData){
         temp = temp->getNext();
         head = temp;
     }
     else {
+        //recorre la lista
         while (temp != nullptr) {
+            //si es la cola elimina la cola
             if (temp->getNext() == this->tail && temp->getNext()->getMemDir() == removeData) {
                 this->tail = temp;
                 tail->setNext(temp->getNext()->getNext());
                 break;
             }
+            //si es el dato a borrar lo borra
             if (temp->getNext()->getMemDir() == removeData) {
                 temp->setNext(temp->getNext()->getNext());
                 break;
@@ -227,6 +254,7 @@ void LinkedList<T>::deleteRef(T* removeData){
 
 template <typename T>
 void LinkedList<T>::freeMemory(){
+    //crea un nodo temporal
     Node<T>* temp = head;
     if(temp->getReferences()==0){
         delete (temp->getMemDir());
@@ -249,6 +277,7 @@ void LinkedList<T>::freeMemory(){
 template <typename T>
 int LinkedList<T>::getDataID(T* data){
     Node<T>* temp = head;
+    //consigue el id del dato
     while(temp!= nullptr){
         if(temp->getMemDir() == data){
             return temp->getID();

@@ -1,10 +1,11 @@
+
+#pragma once
 /**
  * @file GarbageCollector.h
  * @date 02/06/20
  * @author Brayan Solano
  * @brief Se ejecuta como hilo para buscar referenccias que se dejan de usar y asi liberar memoria
 */
-
 #include "LinkedList.h"
 //#include <thread>
 

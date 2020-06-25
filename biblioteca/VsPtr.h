@@ -1,3 +1,5 @@
+#pragma once
+
 /**
  * @file VsPtr.h
  * @date 03/06/2020
@@ -13,7 +15,11 @@
 
 using namespace std;
 
-
+/**
+ * @brief visual studio pointers
+ * 
+ * @tparam T tipo
+ */
 
 template <class T>
 
@@ -83,13 +89,15 @@ public:
 
 template <class T>
 VsPtr<T> VsPtr<T>::New() {
+    //retorna el constructor
 
-    return VsPrt(); 
+    return VsPtr(); 
 
 }
 
 template <class T>
 VsPtr<T>::VsPtr() {
+    //constructor de VSptr
     this->data = new T;
     GarbageCollector* gbC = GarbageCollector::getInstance();
     gbC->addToList(this->data);
